@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Articles List</h1>
+<ul>
+    {% for post in object_list %}
+    <li><p><a href = "{% url 'article' post.pk %}"{{ post.title}} - {{Post.author}}<br>
+        {{post.body}}</p></li>
+    
+
+{% endfor %}
+
+
+</ul>
+{% endblock %}

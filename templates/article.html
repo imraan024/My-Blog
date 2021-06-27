@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block body %}
+<body>
+    <h1>{{ post.title }}</h1>
+    <h4> {{ post.author }}</h4>
+
+    <p> {{ post.body }}</p>
+    <a href = {% url 'home'  %} class="btn btn-success">Home</a>
+</body>
+{% endblock %}
