@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
+{% block addpost %}
+    <li class="nav-item">
+    <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
+    </li>
+{% endblock %}
 {% block body %}
 <h1>Articles List</h1>
 <ul>
     {% for post in object_list %}
     <li><p><a href = "{% url 'article' post.pk %}"{{ post.title}} - {{Post.author}}<br>
-        {{post.body}}</p></li>
+        {{post.title}}</p></li>
     
 
 {% endfor %}
