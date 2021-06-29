@@ -1,4 +1,5 @@
-from myblog.forms import PostForm
+from django.views.generic.edit import UpdateView
+from myblog.forms import PostForm, EditForm
 from myblog.models import Post
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
@@ -24,5 +25,10 @@ class AddPost(CreateView):
 class RegisterView(CreateView):
     model = Post
     template_name = 'register.html'
+class UpdateArticleView(UpdateView):
+    model = Post
+    template_name = 'update.html'
+    form_class = EditForm
+
 
  

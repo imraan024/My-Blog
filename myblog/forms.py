@@ -14,3 +14,15 @@ class PostForm(forms.ModelForm):
 
 
         }
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title','body')
+
+        widgets = {
+            'title': forms.TextInput(attrs = {'class': 'form-control', 'placeholder' : 'Give a Title'}),
+            'body': forms.Textarea(attrs = {'class': 'form-control', 'placeholder': 'Write your Artcle here'})
+
+
+        }

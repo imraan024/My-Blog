@@ -17,7 +17,7 @@
     {% for post in object_list %}
     <li><p><a href = "{% url 'article' post.pk %}"<br>
         {{post.title}}</p></li>
-    
+           
     {% endfor %}
 
 </ul>

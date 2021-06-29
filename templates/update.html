@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+        {{ post.title }}
+{% endblock %}
+
+
+{% block body %}
+<h1>Update Your Article</h1>
+
+<form method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success">Update</button> <br>
+
+</form>
+<br>
+<a href = {% url 'home'  %} class="btn btn-success">Home</a>
+{% endblock %}
