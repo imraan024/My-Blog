@@ -1,7 +1,10 @@
+from myblog.forms import PostForm
 from myblog.models import Post
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+
+
 class HomeView(ListView):
     model= Post
     template_name = 'home.html'
@@ -16,7 +19,10 @@ class ArticleView(DetailView):
 class AddPost(CreateView):
     model = Post
     template_name = 'add.html'
-
-    fields = '__all__'
+    form_class = PostForm
+    #fields = '__all__'
+class RegisterView(CreateView):
+    model = Post
+    template_name = 'register.html'
 
  

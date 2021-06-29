@@ -2,19 +2,24 @@
 
 {% block addpost %}
     <li class="nav-item">
-    <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'add_post' %}">Add Post</a>
     </li>
 {% endblock %}
+{% block register %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#" >Register</a>
+    </li>
+{% endblock %}
+
 {% block body %}
 <h1>Articles List</h1>
 <ul>
     {% for post in object_list %}
-    <li><p><a href = "{% url 'article' post.pk %}"{{ post.title}} - {{Post.author}}<br>
+    <li><p><a href = "{% url 'article' post.pk %}"<br>
         {{post.title}}</p></li>
     
-
-{% endfor %}
-
+    {% endfor %}
 
 </ul>
+
 {% endblock %}
