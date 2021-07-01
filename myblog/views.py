@@ -25,10 +25,6 @@ class AddPost(CreateView):
     form_class = PostForm
     #fields = '__all__'  
 
-class RegisterView(CreateView):
-    model = Post
-    template_name = 'register.html'
-
 class UpdateArticleView(UpdateView):
     model = Post
     template_name = 'update.html'

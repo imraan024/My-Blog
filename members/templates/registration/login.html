@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block title %}
-        Register
+        Login
 {% endblock %}
 
 
 {% block body %}
-<h1>Sign Up</h1>
+<h1>Log In</h1>
 
 <form method = "POST">
     {% csrf_token %}
-    <!-- {{ form.as_p }} -->
+    {{ form.as_p }}
     
-    <button class="btn btn-success">Register</button> <br>
+    <button class="btn btn-success">Login</button> <br>
 
 </form>
 <br>

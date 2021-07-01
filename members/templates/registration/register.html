@@ -1,21 +1,18 @@
 {% extends 'base.html' %}
 
-
-
 {% block title %}
-        {{ post.title }}
+        Register
 {% endblock %}
 
 
 {% block body %}
-<h1>Delete Your Article</h1>
-
-{{ post.title }}
+<h1>Register</h1>
 
 <form method = "POST">
     {% csrf_token %}
-    <h3>Are you sure to Delete!!!</h3>
-    <button class="btn btn-success">Delete</button> <br>
+    {{ form.as_p }}
+    
+    <button class="btn btn-success">Register</button> <br>
 
 </form>
 <br>
