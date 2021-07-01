@@ -10,7 +10,8 @@
 
     <p> {{ post.body }}</p>
     
-    <a href = "{% url 'update' post.pk  %}" class="btn btn-success">Edit</a> 
+    <a href = "{% url 'update' post.pk  %}" class="btn btn-success">Edit</a><br>
+    <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a>  
     <a href = {% url 'home'  %} class="btn btn-success">Home</a>
 </body>
 {% endblock %}
