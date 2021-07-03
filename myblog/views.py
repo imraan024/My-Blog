@@ -3,7 +3,7 @@ from myblog.forms import PostForm, EditForm
 from myblog.models import Post
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Post
+from .models import Category, Post
 from django.urls import reverse_lazy
 
 
@@ -23,7 +23,12 @@ class AddPost(CreateView):
     model = Post
     template_name = 'add.html'
     form_class = PostForm
-    #fields = '__all__'  
+      
+class CreateCat(CreateView):
+    model = Category
+    template_name = 'create_cat.html'
+    fields = '__all__'
+    success_url = reverse_lazy('home')
 
 class UpdateArticleView(UpdateView):
     model = Post
