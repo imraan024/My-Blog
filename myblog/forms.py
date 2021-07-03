@@ -1,15 +1,21 @@
 from django import forms
 from django.forms import widgets 
-from .models import Post
+from .models import Post, Category
+
+choices = Category.objects.all().values_list('name','name')
+choice_list = []
+for items in choices:
+    choice_list.append(items)
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','author','body')
+        fields = ('title','author', 'category','body')
 
         widgets = {
             'title': forms.TextInput(attrs = {'class': 'form-control', 'placeholder' : 'Give a Title'}),
             'author': forms.Select(attrs = {'class': 'form-control'}),
+            'category': forms.Select(choices = choice_list, attrs = {'class': 'form-control'}),
             'body': forms.Textarea(attrs = {'class': 'form-control', 'placeholder': 'Write your Artcle here'})
 
 
