@@ -8,11 +8,11 @@
 <ul>
     {% for post in object_list %}
     <li><p><a href = "{% url 'article' post.pk %}">
-        {{post.title}} - {{ post.category }}
+        {{post.title}} </a> - <a href = "{% url 'category' post.category %}">{{ post.category }}</a>
         </p></li>
-    </a>
+    
 
-       <p>- {{ post.body|slice:":100" }}<a href = "{% url 'article' post.pk %}">Read more...</a></p><br>
+       <p>- {{ post.body|slice:":100" | safe }}<a href = "{% url 'article' post.pk %}">Read more...</a></p><br>
         
            
     {% endfor %}

@@ -7,9 +7,9 @@
 <body>
 
     <h1>{{ post.title }}</h1>
-    <small> <b>{{ post.author }} </b> - {{ post.date }}</small>
+    <small> <b>{{ post.author }} </b> - {{ post.date }} - <a href = "{% url 'category' post.category %}">{{ post.category }}</a></small>
 
-    <p> {{ post.body }}</p>
+    <p> {{ post.body | safe }}</p>
 
     {% if user.is_authenticated %}
     

@@ -29,6 +29,4 @@ class EditForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs = {'class': 'form-control', 'placeholder' : 'Give a Title'}),
             'body': forms.Textarea(attrs = {'class': 'form-control', 'placeholder': 'Write your Artcle here'})
-
-
         }
