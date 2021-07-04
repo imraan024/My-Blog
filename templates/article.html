@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+
+
 {% block title %}
         {{ post.title }}
 {% endblock %}
 
+
 {% block body %}
+
 <body>
 
     <h1>{{ post.title }}</h1>
@@ -12,9 +16,11 @@
     <p> {{ post.body | safe }}</p>
 
     {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
     
         <a href = "{% url 'update' post.pk  %}" class="btn btn-success">Edit</a><br>
         <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a>  
+        {% endif %}
         
     {% endif %}
 
