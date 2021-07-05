@@ -10,8 +10,9 @@
 {% if user.is_authenticated %}
 <h1>Add Your Article</h1>
 <div class ="form_group">
-    <form method = "POST">
+    <form method = "POST" enctype="multipart/form-data">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <button class="btn btn-success">Post</button> <br>
     

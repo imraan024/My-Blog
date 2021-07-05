@@ -1,6 +1,6 @@
 from django.urls import path
 #from . import views
-from .views import AddPost, ArticleView, CreateCat, HomeView, UpdateArticleView, DeleteArticleView, CategoryView
+from .views import AddPost, ArticleView, HomeView, UpdateArticleView, DeleteArticleView, CreateCat, CategoryView
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),
     path('article/<int:pk>', ArticleView.as_view(), name = "article"),
