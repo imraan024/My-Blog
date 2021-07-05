@@ -21,5 +21,5 @@ class Post(models.Model):
     def __str__(self):
         return self.title + ' | ' + str(self.author)
     def get_absolute_url(self):
-        return reverse ('article', args =(str(self.id)))
+        return reverse ('home') 
 # Create your models here.
