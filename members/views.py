@@ -1,5 +1,5 @@
 from django.views.generic.edit import UpdateView
-from members.forms import EditProfileForm, SignUpForm
+from members.forms import  SignUpForm, EditProfileForm
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.views.generic import CreateView
@@ -18,3 +18,4 @@ class UserEditView(UpdateView):
 
     def get_object(self):
         return self.request.user
+
