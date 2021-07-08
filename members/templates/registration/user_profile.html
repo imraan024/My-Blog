@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+        Profile
+{% endblock %}
+
+
+{% block body %}
+<h1>{{page_user.user.first_name }} Profile</h1>
+
+{% if page_user.profile_pic %}
+        <img src="{{ page_user.profile_pic.url }}" class="img-thumbnail" alt="Responsive image" width="250" 
+        height="300">
+{% endif %}
+<p>Name: {{page_user.user.first_name}} {{page_user.user.last_name }}</p>
+<p>Email: {{page_user.user.email}}</p>
+<br>
+<a href = {% url 'home'  %} class="btn btn-success">Home</a>
+{% endblock %}

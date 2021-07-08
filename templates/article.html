@@ -11,7 +11,8 @@
 <body>
 
     <h1>{{ post.title }}</h1>
-    <small> <b>{{ post.author }} </b> - {{ post.date }} - <a href = "{% url 'category' post.category %}">{{ post.category }}</a></small>
+    <small> <b><a href="{% url 'profile_page' post.author.profile.id %}">{{ post.author }}</a>  
+         </b> - {{ post.date }} - <a href = "{% url 'category' post.category %}">{{ post.category }}</a></small>
     {% if post.header_image %}
         <img src="{{ post.header_image.url }}">
     {% endif %}
@@ -26,8 +27,6 @@
         
     {% endif %}
 
-    
-    
    
     <a href = {% url 'home'  %} class="btn btn-success">Home</a>
 </body>
