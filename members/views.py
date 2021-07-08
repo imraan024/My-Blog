@@ -1,7 +1,7 @@
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-from members.forms import  SignUpForm, EditProfileForm
+from .forms import  SignUpForm, EditProfileForm
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, UserChangeForm
 from django.views.generic import CreateView

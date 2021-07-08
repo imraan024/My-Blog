@@ -29,7 +29,6 @@ class EditProfileForm(UserChangeForm):
     #is_active = forms.CharField(max_length=50, widget = forms.CheckboxInput(attrs = {'class': 'form-check', 'type' : 'hidden'}))
     #date_joined = forms.CharField(max_length=50,  widget = forms.TextInput(attrs = {'class': 'form-control', 'type' : 'hidden'}))
     
-
     class Meta:
         model = User
         fields = ('username','first_name','last_name', 'email','password')

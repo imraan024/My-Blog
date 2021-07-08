@@ -1,9 +1,8 @@
 from django.views.generic.edit import DeleteView, UpdateView
-from myblog.forms import PostForm, EditForm
-from myblog.models import Post
+from .forms import PostForm, EditForm
+from .models import Post, Category
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Category, Post
 from django.urls import reverse_lazy
 
 
