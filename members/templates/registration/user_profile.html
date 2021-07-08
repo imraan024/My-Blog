@@ -8,6 +8,7 @@
 
 {% block body %}
 <h1>{{page_user.user.first_name }} Profile</h1>
+{{ page_user.bio }}
 
 {% if page_user.profile_pic %}
         <img src="{{ page_user.profile_pic.url }}" class="img-thumbnail" alt="Responsive image" width="250" 

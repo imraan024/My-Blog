@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+        Edit Profile
+{% endblock %}
+
+
+{% block body %}
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+        <h1>Edit Your Profile</h1>
+        <div class ="form_group">
+            <form method = "POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button class="btn btn-success">Update</button> <br>
+            
+            </form>
+        </div>
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById("imran").value = name;
+        </script>
+
+        <br>
+        <a href = {% url 'home'  %} class="btn btn-success">Home</a>
+    {% else %}
+        You're NOT the Right Person to edit This!!!
+    {% endif %}
+{% else %}
+    Vaaag Eihante!!!
+{% endif %}
+{% endblock %}
