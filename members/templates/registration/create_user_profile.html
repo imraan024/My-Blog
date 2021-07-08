@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+        Create profile page
+{% endblock %}
+
+
+{% block body %}
+{% if user.is_authenticated %}
+<h1>Create Your Profile</h1>
+<div class ="form_group">
+    <form method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button class="btn btn-success">Create</button> <br>
+    
+    </form>
+</div>
+
+<br>
+<a href = {% url 'home'  %} class="btn btn-success">Home</a>
+{% else %}
+Vaaag Eihante!!!
+{% endif %}
+{% endblock %}

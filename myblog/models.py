@@ -21,7 +21,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse ('article')
+        return reverse ('home')
 
 
 # Create your models here.
@@ -32,4 +32,5 @@ class Profile(models.Model):
     profile_pic = models.ImageField(null=True, blank=True, upload_to = 'images/')
     def __str__(self):
         return str(self.user)
-
+    def get_absolute_url(self):
+        return reverse ('home')
