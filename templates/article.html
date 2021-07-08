@@ -14,7 +14,8 @@
     <small> <b><a href="{% url 'profile_page' post.author.profile.id %}">{{ post.author }}</a>  
          </b> - {{ post.date }} - <a href = "{% url 'category' post.category %}">{{ post.category }}</a></small>
     {% if post.header_image %}
-        <img src="{{ post.header_image.url }}">
+        <img src="{{ post.header_image.url }}" width="250" 
+        height="300">
     {% endif %}
     <p> {{ post.body | safe }}</p>
 
