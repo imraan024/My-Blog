@@ -8,10 +8,11 @@
 {% block body %}
 
 {% if user.is_authenticated %}
-    {% if user.profile.user_status == "Editor" %}
+    {% if user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}
 
         <h1>Approve this Article</h1>
 
+        <li>Set Post Status as 1 for Approve the post!!</li>
         <form method = "POST">
             {% csrf_token %}
             

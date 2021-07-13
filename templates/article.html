@@ -18,20 +18,25 @@
     <p> {{ post.body | safe }}</p>
 
     {% if user.is_authenticated %}
-        {% if user.id == post.author.id %}
-    
-        <a href = "{% url 'update' post.pk  %}" class="btn btn-success">Edit</a><br>
-        <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a>  
+        {% if user.id == post.author.id and user.profile.user_status == "Member" %}
+            <a href = "{% url 'update' post.pk  %}" class="btn btn-success">Edit</a><br>
+            <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a> 
+        
+        {% elif user.profile.user_status == "Editor" and post.post_status == 0 %}
+            <a href = "{% url 'approve' post.pk  %}" class="btn btn-success">Aprove</a><br>
+            <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Decline</a> 
+        {% elif user.profile.user_status == "Admin" and post.post_status == 0 %}
+            <a href = "{% url 'approve' post.pk  %}" class="btn btn-success">Aprove</a><br>
+            <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Decline</a> 
+
+        {% elif user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}    
+            <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a>
+
         {% endif %}
         
     {% endif %}
-    {% if user.profile.user_status == "Editor" and post.post_status == 0 %}
-        <a href = "{% url 'approve' post.pk  %}" class="btn btn-success">Aprove</a><br>
-        <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Decline</a> 
-    {% elif user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}
-         
-    <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a>
-    {% endif %}
+    
+
 
 
    

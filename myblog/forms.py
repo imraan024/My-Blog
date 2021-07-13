@@ -38,7 +38,7 @@ class ApproveForm(forms.ModelForm):
         fields = ('post_status',)
 
         widgets = {
-            'post_status': forms.NumberInput(),
+            'post_status': forms.NumberInput(attrs={'min': 0, 'max': 1}),
         }
 
 
