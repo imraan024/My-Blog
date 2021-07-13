@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Articles List</h1>
+
+<ul>
+    {% for post in object_list %}
+        {% if post.post_status == 0 and user.profile.user_status == "Editor" %}
+    <li><p><a href = "{% url 'article' post.pk %}">
+        {{post.title}} </a> - <a href = "{% url 'category' post.category %}">{{ post.category }}</a>
+        </p></li>
+    
+
+       <p>- {{ post.body|slice:":100" | safe }}<a href = "{% url 'article' post.pk %}">Read more...</a></p><br>
+       <li><p><a href = "{% url 'article' post.pk %}">
+        {{post.title}} </a> - <a href = "{% url 'category' post.category %}">{{ post.category }}</a>
+        </p></li>
+    
+
+       <p>- {{ post.body|slice:":100" | safe }}<a href = "{% url 'article' post.pk %}">Read more...</a></p><br>
+       {% else %}
+       {% endif %}
+        
+           
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

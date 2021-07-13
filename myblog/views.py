@@ -18,7 +18,10 @@ class HomeView(ListView):
         return context
 #def home(request):
  #   return render(request, 'home.html' , {})
-
+class EditorArticleView(ListView):
+    model= Post
+    template_name = 'view_articles.html'
+    ordering = ['-id']
 
 class ArticleView(DetailView):
     model = Post
