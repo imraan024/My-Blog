@@ -25,6 +25,14 @@
         {% endif %}
         
     {% endif %}
+    {% if user.profile.user_status == "Editor" and post.post_status == 0 %}
+        <a href = "{% url 'approve' post.pk  %}" class="btn btn-success">Aprove</a><br>
+        <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Decline</a> 
+    {% elif user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}
+         
+    <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a>
+    {% endif %}
+
 
    
     <a href = {% url 'home'  %} class="btn btn-success">Home</a>

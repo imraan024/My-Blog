@@ -1,5 +1,5 @@
 from django.views.generic.edit import DeleteView, UpdateView
-from .forms import PostForm, EditForm
+from .forms import PostForm, EditForm, ApproveForm
 from .models import Post, Category
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
@@ -49,6 +49,11 @@ def CategoryView(request, cats):
     category_posts = Post.objects.filter(category = cats)
     return render(request, 'categories.html', { 'cats': cats, 'category_posts' : category_posts })
 
-def EditorHomeView(request):
-    return render(request, 'editor_home.html')
+class ApproveArticleView(UpdateView):
+    model = Post
+    template_name = 'approve.html'
+    form_class = ApproveForm
+
+
+    
 

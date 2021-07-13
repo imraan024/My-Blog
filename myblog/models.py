@@ -10,11 +10,14 @@ class Post(models.Model):
     body = models.TextField()
     date = models.DateField(auto_now_add = True) 
     category = models.CharField(max_length= 255)
+    post_status = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
     def get_absolute_url(self):
         return reverse ('home') 
+
+
 class Category(models.Model):
     name = models.CharField(max_length= 255)
     def __str__(self):
@@ -35,3 +38,4 @@ class Profile(models.Model):
         return str(self.user)
     def get_absolute_url(self):
         return reverse ('home')
+

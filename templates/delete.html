@@ -9,7 +9,7 @@
 
 {% block body %}
 {% if user.is_authenticated %}
-    {% if user.id == post.author.id %}
+    {% if user.id == post.author.id or user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}
 
         <h1>Delete Your Article</h1>
 
@@ -25,6 +25,6 @@
         <a href = {% url 'home'  %} class="btn btn-success">Home</a>
     {% endif %}
 {% else %}
-Delete korbi?? Sokher to komti nai dekhi!!
+    Delete korbi?? Sokher to komti nai dekhi!!
 {% endif %}
 {% endblock %}
