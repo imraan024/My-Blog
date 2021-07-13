@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Articles List</h1>
+
+<ul>
+    {% for post in object_list %}
+    <li><p><a href = "{% url 'article' post.pk %}">
+        {{post.title}} </a> - <a href = "{% url 'category' post.category %}">{{ post.category }}</a>
+        </p></li>
+    
+
+       <p>- {{ post.body|slice:":100" | safe }}<a href = "{% url 'article' post.pk %}">Read more...</a></p><br>
+        
+           
+    {% endfor %}
+
+</ul>
+
+{% endblock %}
