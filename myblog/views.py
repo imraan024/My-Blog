@@ -60,3 +60,7 @@ class ApproveArticleView(UpdateView):
 
     
 
+
+
+    
+
