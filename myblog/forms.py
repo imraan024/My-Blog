@@ -26,7 +26,7 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','body','header_image')
+        fields = ('title','body','header_image',)
 
         widgets = {
             'title': forms.TextInput(attrs = {'class': 'form-control', 'placeholder' : 'Give a Title'}),

@@ -18,7 +18,7 @@
     <p> {{ post.body | safe }}</p>
 
     {% if user.is_authenticated %}
-        {% if user.id == post.author.id and user.profile.user_status == "Member" %}
+        {% if user.id == post.author.id %}
             <a href = "{% url 'update' post.pk  %}" class="btn btn-success">Edit</a><br>
             <a href = "{% url 'delete' post.pk  %}" class="btn btn-success">Delete</a> 
         
