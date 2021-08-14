@@ -58,8 +58,8 @@ class ApproveArticleView(UpdateView):
     form_class = ApproveForm
 
 
-    
-
+def SearchItem(request):
+    return render(request, 'search_item.html', {})
 
 
     
