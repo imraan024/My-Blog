@@ -59,7 +59,13 @@ class ApproveArticleView(UpdateView):
 
 
 def SearchItem(request):
-    return render(request, 'search_item.html', {})
+    if request.method == "POST":
+        searched = request.POST['searched']
+        articles = Post.objects.filter(title__icontains = searched)
+        return render(request, 'search_item.html', {'searched': searched, 'articles': articles})
+    
+    else:
+        return render(request, 'search_item.html')
 
 
     

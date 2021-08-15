@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>Search</h1>
+{% if searched %}
+    <h3>You Searched: {{ searched }}</h3>
+    <b><label>Related Artilces</label></b>
+    <ul>
+        {% for article in articles %}
+           <a href="{% url 'article' article.id %}">{{ article }}</a><br>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>You searched Nothing!!</h3>
+{% endif %}
+
 
 
 
