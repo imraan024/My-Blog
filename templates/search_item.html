@@ -4,11 +4,15 @@
 {% if searched %}
     <h3>You Searched: {{ searched }}</h3>
     <b><label>Related Artilces</label></b>
+    {% if articles %}
     <ul>
         {% for article in articles %}
            <a href="{% url 'article' article.id %}">{{ article }}</a><br>
         {% endfor %}
     </ul>
+    {% else %}
+    <h3>No article Found!! Search another...</h3>
+    {% endif %}
 {% else %}
     <h3>You searched Nothing!!</h3>
 {% endif %}
