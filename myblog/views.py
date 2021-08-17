@@ -1,7 +1,7 @@
 from django.views.generic.edit import DeleteView, UpdateView
 from .forms import PostForm, EditForm, ApproveForm
 from .models import Post, Category
-from django.shortcuts import render
+from django.shortcuts import  render
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 
@@ -26,6 +26,7 @@ class EditorArticleView(ListView):
 class ArticleView(DetailView):
     model = Post
     template_name = 'article.html'
+    
     
 class AddPost(CreateView):
     model = Post

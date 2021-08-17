@@ -12,6 +12,7 @@ urlpatterns = [
     path('article/approve/<int:pk>', ApproveArticleView.as_view(), name = "approve"),
     path('view_article/', EditorArticleView.as_view(), name="view_article"),
     path('search/', SearchItem, name="searched"),
+    
 
 
    
