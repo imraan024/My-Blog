@@ -19,7 +19,7 @@ def ApiOverView(request):
 
 @api_view(['GET'])
 def ShowAllPost(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(post_status = 1)
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data)
 

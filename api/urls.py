@@ -4,6 +4,6 @@ from .views import ApiOverView, ShowAllPost
 urlpatterns = [
     
     path('', ApiOverView, name="api" ),
-    path('list/', ShowAllPost, name="show-all"),
+    path('post-list/', ShowAllPost, name="show-all"),
 
 ]
