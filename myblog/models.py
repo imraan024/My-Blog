@@ -5,7 +5,7 @@ from datetime import datetime, date
 
 class Post(models.Model):
     title = models.CharField(max_length= 255)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
     header_image = models.ImageField(null=True, blank=True, upload_to="images/")
     body = models.TextField()
     date = models.DateField(auto_now_add = True) 
