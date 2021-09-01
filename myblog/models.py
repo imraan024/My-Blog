@@ -34,6 +34,7 @@ class Profile(models.Model):
     bio = models.TextField(null=True, blank=True)
     profile_pic = models.ImageField(null=True, blank=True, upload_to = 'images/')
     user_status = models.CharField(max_length=50, null = True, blank= True)
+    auth_token = models.CharField(max_length=100, null = False, blank=True)
     def __str__(self):
         return str(self.user)
     def get_absolute_url(self):

@@ -11,31 +11,6 @@ from django.urls import reverse_lazy
 from myblog.models import Profile
 
 #views
-
-# class UserRegisterView(CreateView):
-#     form_class = SignUpForm
-#     print(type(form_class))
-#     template_name = 'registration/register.html'
-#     success_url = reverse_lazy('login')
-#     if form_class.is_valid():
-#         try:
-#             username = form_class.POST.get('username')
-#             print(username)
-#             # email = form_class.POST.get('email')
-#             # first_name = form_class.POST.get('first_name')
-#             # last_name = form_class.POST.get('last_name')
-#             #     #phone = request.POST.get('phone')
-#             # password = form_class.POST.get('password1')
-#             #     #auth_token = str(uuid.uuid4())
-#             # profile_obj = Profile.objects.create(username = username, email = email, first_name = first_name, last_name = last_name )
-#             # profile_obj.set_password(password)
-#             # profile_obj.save()
-#                 #print(auth_token)
-#                 #sendMailAfterRagistration(email, auth_token)   
-#             success_url = reverse_lazy("login")      
-
-#         except Exception as e:
-#                 print(e)
         
 
      
