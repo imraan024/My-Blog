@@ -1,17 +1,22 @@
 from django.contrib.auth.views import PasswordChangeView
-from django.views.generic import CreateView
+from django.urls.base import reverse
+from django.views.generic import View, CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
 from .forms import  SignUpForm, EditProfileForm
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect, redirect
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, UserChangeForm
 from django.urls import reverse_lazy
 from myblog.models import Profile
 
+#views
+
 class UserRegisterView(CreateView):
     form_class = SignUpForm
+    print(type(form_class))
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('login')
+        
+
 
 
 class UserEditView(UpdateView):

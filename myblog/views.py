@@ -17,7 +17,7 @@ class HomeView(ListView):
         context["cat_menu"] = cat_menu
         return context
 #def home(request):
- #   return render(request, 'home.html' , {})
+#   return render(request, 'home.html' , {})
 class EditorArticleView(ListView):
     model= Post
     template_name = 'view_articles.html'
