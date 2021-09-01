@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordChangeView
 from django.urls.base import reverse
 from django.views.generic import View, CreateView
@@ -11,10 +12,74 @@ from myblog.models import Profile
 
 #views
 
-class UserRegisterView(CreateView):
-    form_class = SignUpForm
-    print(type(form_class))
-    template_name = 'registration/register.html'
+# class UserRegisterView(CreateView):
+#     form_class = SignUpForm
+#     print(type(form_class))
+#     template_name = 'registration/register.html'
+#     success_url = reverse_lazy('login')
+#     if form_class.is_valid():
+#         try:
+#             username = form_class.POST.get('username')
+#             print(username)
+#             # email = form_class.POST.get('email')
+#             # first_name = form_class.POST.get('first_name')
+#             # last_name = form_class.POST.get('last_name')
+#             #     #phone = request.POST.get('phone')
+#             # password = form_class.POST.get('password1')
+#             #     #auth_token = str(uuid.uuid4())
+#             # profile_obj = Profile.objects.create(username = username, email = email, first_name = first_name, last_name = last_name )
+#             # profile_obj.set_password(password)
+#             # profile_obj.save()
+#                 #print(auth_token)
+#                 #sendMailAfterRagistration(email, auth_token)   
+#             success_url = reverse_lazy("login")      
+
+#         except Exception as e:
+#                 print(e)
+        
+
+     
+    
+
+        
+
+    
+def register(request):
+    context = {}
+    form = SignUpForm(request.POST)
+    
+    if request.POST:
+        form = SignUpForm(request.POST)
+        
+        if form.is_valid():
+            
+            try:
+                user = request.POST.get('username')
+                email = request.POST.get('email')
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                #phone = request.POST.get('phone')
+                password = request.POST.get('password1')
+                print(email)
+                #auth_token = str(uuid.uuid4())
+                profile_obj = User.objects.create(username = user, email = email, first_name = first_name, last_name = last_name )
+                profile_obj.set_password(password)
+                profile_obj.save()
+                #print(auth_token)
+                #sendMailAfterRagistration(email, auth_token)   
+                return redirect("login")      
+
+            except Exception as e:
+                print(e)
+        context['register_form']=form
+
+    else:
+        form=SignUpForm()
+        
+        context['register_form']=form
+        print(context)
+    
+    return render(request, 'registration/register.html', context)
         
 
 
