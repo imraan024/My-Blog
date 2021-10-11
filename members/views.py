@@ -75,7 +75,7 @@ def login_view(request):
     context = {
         'login_form': form,
     }
-    return render(request, "login.html", context)
+    return render(request, "registration/login.html", context)
 
 def logout_view(request):
     logout(request)
@@ -96,7 +96,7 @@ class PasswodrsChangeView(PasswordChangeView):
 
 
 class ProfilePageView(DetailView):
-    model = Profile 
+    model = UserProfile 
     template_name = 'registration/user_profile.html'
     
     def get_context_data(self, *args, **kwargs):
@@ -107,15 +107,17 @@ class ProfilePageView(DetailView):
         return context
 
 class EditProfilePageView(UpdateView):
-    model = Profile
+    model = UserProfile
     template_name = "registration/edit_profile_page.html"
     success_url = reverse_lazy('home')
     fields = ['bio','profile_pic']
 
 class CreateProfilePageView(CreateView):
-    model = Profile
+    model = UserProfile
     template_name = "registration/create_user_profile.html"
+    success_url = reverse_lazy('home')
     fields = ('bio','profile_pic')
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.username = self.request.user
+        form.instance.email = self.request.user
         return super().form_valid(form)

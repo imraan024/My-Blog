@@ -47,13 +47,13 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'is_admin')
     list_filter = ('is_admin',)
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'username', 'first_name', 'last_name', 'phone','user_status')}),
+        (None, {'fields': ('email', 'password', 'username', 'first_name', 'last_name','profile_pic', 'bio', 'phone','user_status')}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'username', 'first_name', 'last_name','phone', 'user_status')}
+            'fields': ('email', 'password1', 'password2', 'username', 'first_name', 'last_name','profile_pic', 'bio','phone', 'user_status')}
         ),
     )
     search_fields = ('email',)
