@@ -1,34 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %} {{ post.title }} {% endblock %} {% block body %} {% if user.is_authenticated %} {% if user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}
 
+<h1>Approve this Article</h1>
 
-{% block title %}
-        {{ post.title }}
-{% endblock %}
+<li>Set Post Status as 1 for Approve the post!!</li>
+<form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="btn btn-success">Approve</button> <br>
 
-{% block body %}
-
-{% if user.is_authenticated %}
-    {% if user.profile.user_status == "Editor" or user.profile.user_status == "Admin" %}
-
-        <h1>Approve this Article</h1>
-
-        <li>Set Post Status as 1 for Approve the post!!</li>
-        <form method = "POST">
-            {% csrf_token %}
-            
-            {{ form.as_p }}
-            <button class="btn btn-success">Approve</button> <br>
-
-        </form>
-        <br>
-        <a href = {% url 'home'  %} class="btn btn-success">Home</a>
-    {% else %}
-        <h2> Go F yourself </h2>
-    {% endif %}
-
-
-{% else %}
-Mara kha shala!!!
-{% endif %}
-
-{% endblock %}
+</form>
+<br>
+<a href={ % url 'home' %} class="btn btn-success">Home</a> {% else %}
+<h2> Go F yourself </h2>
+{% endif %} {% else %} Mara kha shala!!! {% endif %} {% endblock %}
