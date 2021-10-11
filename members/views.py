@@ -4,11 +4,15 @@ from django.urls.base import reverse
 from django.views.generic import View, CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-from .forms import  SignUpForm, EditProfileForm
+
+from members.models import UserProfile
+from .forms import  SignUpForm, EditProfileForm, UserLoginForm
 from django.shortcuts import get_object_or_404, render, HttpResponseRedirect, redirect
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, UserChangeForm
 from django.urls import reverse_lazy
 from myblog.models import Profile
+from django.contrib.auth import authenticate,login, logout
+from django.contrib import messages
 
 #views
         
@@ -29,7 +33,7 @@ def register(request):
         if form.is_valid():
             
             try:
-                user = request.POST.get('username')
+                username = request.POST.get('username')
                 email = request.POST.get('email')
                 first_name = request.POST.get('first_name')
                 last_name = request.POST.get('last_name')
@@ -37,7 +41,7 @@ def register(request):
                 password = request.POST.get('password1')
                 print(email)
                 #auth_token = str(uuid.uuid4())
-                profile_obj = User.objects.create(username = user, email = email, first_name = first_name, last_name = last_name )
+                profile_obj = UserProfile.objects.create(username = username, email = email, first_name = first_name, last_name = last_name )
                 profile_obj.set_password(password)
                 profile_obj.save()
                 #print(auth_token)
@@ -56,8 +60,26 @@ def register(request):
     
     return render(request, 'registration/register.html', context)
         
+def login_view(request):
+    next = request.GET.get('next')
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username = username, password=password)
+        login(request, user)
+        if next:
+            return redirect(next)
+        return redirect('/')
 
+    context = {
+        'login_form': form,
+    }
+    return render(request, "login.html", context)
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 class UserEditView(UpdateView):
     form_class = EditProfileForm
@@ -83,6 +105,7 @@ class ProfilePageView(DetailView):
         page_user = get_object_or_404(Profile, id = self.kwargs['pk'])
         context["page_user"] = page_user
         return context
+
 class EditProfilePageView(UpdateView):
     model = Profile
     template_name = "registration/edit_profile_page.html"
