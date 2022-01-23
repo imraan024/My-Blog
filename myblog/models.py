@@ -33,8 +33,6 @@ class Category(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(UserProfile, null = True, on_delete = models.CASCADE)
-    
-    
     def __str__(self):
         return str(self.user)
     def get_absolute_url(self):
