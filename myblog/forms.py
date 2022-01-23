@@ -16,7 +16,6 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs = {'class': 'form-control', 'placeholder' : 'Give a Title'}),
             'author': forms.TextInput(attrs = {'class': 'form-control', 'value' : '', 'id': 'user', 'type':'hidden'}),
-            #'author': forms.Select(attrs = {'class': 'form-control'}),
             'category': forms.Select(choices = choice_list, attrs = {'class': 'form-control'}),
             'body': forms.Textarea(attrs = {'class': 'form-control', 'placeholder': 'Write your Artcle here'})
 
@@ -42,6 +41,3 @@ class ApproveForm(forms.ModelForm):
             'post_status': forms.NumberInput(attrs={'min': 0, 'max': 1}),
         }
 
-
-        
-        
