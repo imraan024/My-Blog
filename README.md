@@ -21,4 +21,4 @@ auto-ignored.
 - After getting approval the post's will be shown in `Homepage`
 
 ## Live Server
-[Imran's Blog](https://imraan.pythonanywhere.com/)
+[Imran's Blog](https://alimran.pythonanywhere.com/)
